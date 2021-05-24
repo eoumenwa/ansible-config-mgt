@@ -10,17 +10,6 @@
       name: wireshark
       state: latest
 
-- name: update lb and db servers
-  hosts: lb, db
-  remote_user: ubuntu
-  become: yes
-  become_user: root
-  tasks:
-  - name: ensure wireshark is at the latest version
-    apt:
-      name: wireshark
-      state: latest 
-
 - name: update web servers
   hosts: webservers, nfs
   remote_user: ec2-user
@@ -31,7 +20,6 @@
     yum:
       name: httpd
       state: latest
-  
   - name: ensure chrony is at the latest version
     yum:
       name: chrony
@@ -55,4 +43,26 @@
   - name: create empty file
     file:
       path: "/home/ec2-user/my-ansible-test-dir/my-ansible-test-file"
-      state: touch        
+      state: touch      
+
+- name: update lb server
+  hosts: lb
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    apt:
+      name: wireshark
+      state: latest
+      
+- name: update db server
+  hosts: db
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    apt:
+      name: wireshark
+      state: latest 
