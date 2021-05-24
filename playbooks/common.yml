@@ -1,0 +1,58 @@
+---
+- name: update web and nfs servers
+  hosts: webservers, nfs
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    yum:
+      name: wireshark
+      state: latest
+
+- name: update lb and db servers
+  hosts: lb, db
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    apt:
+      name: wireshark
+      state: latest 
+
+- name: update web servers
+  hosts: webservers, nfs
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure httpd is at the latest version
+    yum:
+      name: httpd
+      state: latest
+  
+  - name: ensure chrony is at the latest version
+    yum:
+      name: chrony
+      state: latest
+
+  - name: test to see if SeLinux is running
+    command: getenforce
+    register: sestatus
+    changed_when: false
+
+- name: make new directory and create a file inside the new directory
+  hosts: webservers, nfs
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: make directory
+    file:
+      path: "/home/ec2-user/my-ansible-test-dir"
+      state: directory
+  - name: create empty file
+    file:
+      path: "/home/ec2-user/my-ansible-test-dir/my-ansible-test-file"
+      state: touch        
