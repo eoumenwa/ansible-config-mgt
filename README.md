@@ -453,9 +453,9 @@ Execute ansible-playbook command and verify that the playbook actually works:
    Created a new branch called "master" and went to settings/branches then changed default branch to master from main. This now corresponds to the branch specifier on Jenkins    
    I could have also changed the specifier in Jenkins to */main to match the default branch in GIT.
 
-2. I was unable to use the saved Jenkins artifacts to run ansible test. The play as always halting for no reason since I could run the block of tasks successfully on   
- 
-   individual hosts. I however setenforce to zero and tried again before I could successfully run the laybook on all servers
+2. I was unable to use the saved Jenkins artifacts to run ansible test. The play as always halting for no reason since I could run the block of tasks successfully on 
+
+   individual hosts. I however setenforce to zero and tried again before I could successfully run the playbook on all servers
    
 3. Issues with SSH into the required servers. I had to enable password authentication on all servers to copy ssh ids (see step 4b)
 
