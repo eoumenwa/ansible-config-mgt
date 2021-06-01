@@ -455,7 +455,8 @@ Execute ansible-playbook command and verify that the playbook actually works:
 
 2. I was unable to use the saved Jenkins artifacts to run ansible test. The play as always halting for no reason since I could run the block of tasks successfully on 
 
-   individual hosts. I however setenforce to zero and tried again before I could successfully run the playbook on all servers
+   individual hosts. I however setenforce to zero, confirmed httpd status on both webservers, ran df -h on nfs server and webservers, confirmed nfs-server status on nfs  
+   server and tried again before I could successfully run the playbook on all servers
    
 3. Issues with SSH into the required servers. I had to enable password authentication on all servers to copy ssh ids (see step 4b)
 
