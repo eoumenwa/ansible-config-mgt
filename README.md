@@ -10,6 +10,7 @@ On the diagram below the Virtual Private Network (VPC) is divided into two subne
    ![image](https://user-images.githubusercontent.com/78841364/118401574-32b1cd80-b634-11eb-8ae5-b16730057fae.png)
 
 ### Task
+
 Install and configure Ansible client to act as a Jump Server/Bastion Host
 
 Create a simple Ansible playbook to automate servers configuration
@@ -51,6 +52,7 @@ Create a simple Ansible playbook to automate servers configuration
 7. Configure a Post-build job to save all (**) files.
 
 8. Test your setup by making some change in README.MD file in master branch and make sure that builds starts automatically and Jenkins saves the files (build artifacts) in   
+   
    following folder
  
             ls /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/
@@ -59,7 +61,9 @@ Create a simple Ansible playbook to automate servers configuration
 
   ![image](https://user-images.githubusercontent.com/78841364/118416923-e5f3e400-b67f-11eb-9134-758dce32336e.png)
   
-Tip Every time you stop/start your Jenkins-Ansible server - you have to reconfigure GitHub webhook to a new IP address, in order to avoid it, it makes sense to allocate an Elastic IP to your Jenkins-Ansible server (you have done it before to your LB server in Project 10). Note that Elastic IP is free only when it is being allocated to an EC2 Instance, so do not forget to release Elastic IP once you terminate your EC2 Instance.
+Tip Every time we stop/start the Jenkins-Ansible server - we have to reconfigure GitHub webhook to a new IP address, in order to avoid it, it makes sense to allocate an 
+
+Elastic IP to the Jenkins-Ansible server. 
 
 ### Step 2 - Prepare development environment using Visual Studio Code
 
@@ -107,22 +111,24 @@ Tip Every time you stop/start your Jenkins-Ansible server - you have to reconfig
 
 1. Edit inventory/dev.yml as follows:
 
-[nfs]
-<NFS-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
+         [nfs]
+         <NFS-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
 
-[webservers]
-<Web-Server1-Private-IP-Address> ansible_ssh_user='ec2-user'
-<Web-Server2-Private-IP-Address> ansible_ssh_user='ec2-user'
+         [webservers]
+         <Web-Server1-Private-IP-Address> ansible_ssh_user='ec2-user'
+         <Web-Server2-Private-IP-Address> ansible_ssh_user='ec2-user'
 
-[db]
-<Database-Private-IP-Address> ansible_ssh_user='ubuntu' 
+         [db]
+         <Database-Private-IP-Address> ansible_ssh_user='ubuntu' 
 
-[lb]
-<Load-Balancer-Private-IP-Address> ansible_ssh_user='ubuntu'
+         [lb]
+         <Load-Balancer-Private-IP-Address> ansible_ssh_user='ubuntu'
 
 Save the inventory structure start configuring the development servers
 
-Note: Ansible uses TCP port 22 by default, which means it needs to ssh into target servers from Jenkins-Ansible host - for this we need to copy the private (.pem) key to the server and also change permissions to the private key chmod 400 key.pem so that EC2 will accept the key. 
+Note: Ansible uses TCP port 22 by default, which means it needs to ssh into target servers from Jenkins-Ansible host - for this we need to copy the private (.pem) key to the 
+
+server and also change permissions to the private key chmod 400 key.pem so that EC2 will accept the key. 
 
 2. Change permissions to private key
        
@@ -268,10 +274,10 @@ Run the command below to confirm all hosts are reachable
        ~/ansible/ansible-config-mgt/playbooks$ ansible-playbook common.yml 
 
 
-First Playbook Run on webserver-1
+#### First Playbook Run on webserver-1
 
-   ![image](https://user-images.githubusercontent.com/78841364/118551260-b8647480-b72b-11eb-84d9-eace08ce18c4.png)
 
+![image](https://user-images.githubusercontent.com/78841364/118551260-b8647480-b72b-11eb-84d9-eace08ce18c4.png)
 
 
 ### Step 6 - Update GIT with the latest code
@@ -280,9 +286,9 @@ First Playbook Run on webserver-1
 
 2.  Enter command here
 
-3. Commit code into GitHub:
+3.  Commit code into GitHub:
 
-   use git commands to add, commit and push the branch to GitHub.
+    use git commands to add, commit and push the branch to GitHub.
 
          ~/ansible/ansible-config-mgt$ git add .
 
