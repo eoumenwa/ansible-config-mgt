@@ -199,6 +199,8 @@ Run
 
 3. Change path to ansible config file to define inventory location as shown below
 
+         sudo vi /etc/ansible/ansible.cfg
+   
    [defaults]
 
    ####### some basic default values...
