@@ -1,5 +1,0 @@
----
-- hosts: uat-webservers
-  become: yes
-  roles:
-     - webserver

@@ -1,0 +1,9 @@
+mysql_databases:
+  - name: tooling
+    encoding: 
+    collation: 
+mysql_users:
+  - name: myuser
+    host: "%"
+    password: password
+    priv: "tooling.*:ALL"
