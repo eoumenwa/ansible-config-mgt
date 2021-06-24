@@ -1,7 +1,5 @@
 ---
 - hosts: db
   become: yes
-  vars_files:
-    - default/main.yml
   roles:
-    - { role: mysql }
+     - mysql
