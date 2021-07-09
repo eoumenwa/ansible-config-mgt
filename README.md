@@ -40,7 +40,7 @@ Create a simple Ansible playbook to automate servers configuration
    
    - Perform initial Jenkins setup
   
-  - From the browser access http://<Jenkins-Server-Public-IP-Address-or-Public-DNS-Name>:8080
+  - From the browser access http://Jenkins-Server-Public-IP-Address-or-Public-DNS-Name:8080
   
   - Retrieve password from server using sudo cat /var/lib/jenkins/secrets/initialAdminPassword.
       
