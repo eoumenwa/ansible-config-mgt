@@ -95,7 +95,7 @@ Elastic IP to the Jenkins-Ansible server.
          
          master
 
-3. Create a directory and name it playbooks (for storage all playbook files).
+3. Create a directory and name it playbooks (for storage of all playbook files).
 
 4. Create a directory and name it inventory (for keeping the hosts organised).
 
